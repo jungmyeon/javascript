@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .top-nav{
+            background: lightgray;
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            width: 100%;
+        }
+        .top-nav li{
+            display: inline-block;
+            padding: 6px;
+        }
+        .bottom-nav{
+            background-color: black;
+            display: inline-flex;
+            height: 0;
+            width: 100%;
+            color: white;
+            z-index: 5;
+            text-align: center;
+            visibility: hidden;
+        }
+        .bottom-nav li {
+            list-style-type: none;
+            padding: 5px;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 : 로고 -->
+    <div class="top-nav">
+        <h2 id="logo">로고</h2>
+        <ul>
+            <li>커피</li>
+            <li>라떼</li>
+            <li>주스</li>
+            <li>티</li>
+        </ul>
+    </div>
+    <div class="bottom-nav" id="down">
+        <div>
+            <h3>커피</h3>
+            <ul>
+                <li>아메리카노</li>
+                <li>콜드브루</li>
+            </ul>
+        </div>
+        <div>
+            <h3>라떼</h3>
+            <ul>
+                <li>카페라떼</li>
+                <li>콜드브루라떼</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var down_nav_flag = 0
+        document.getElementById('logo').addEventListener('click', function(){
+            if(down_nav_flag === 0 ){
+                down_nav_flag = 1
+                document.getElementById('down').style.height = 'auto'
+                document.getElementById('down').style.visibility = 'visible'
+            }else if(down_nav_flag === 1){
+                down_nav_flag = 0 
+                document.getElementById('down').style.height = '0'
+                document.getElementById('down').style.visibility = 'hidden'
+            }
+        })
+    </script>
+</body>
+</html>
