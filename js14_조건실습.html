@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건 실습</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .section1{
+            background: lightgray;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            width: 100%;
+        }
+        
+        .section1 li{
+            display: inline-block;
+            padding: 20px;
+        }
+        .section2 li:hover,
+        .section1 li:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .section1 li,
+        .section2 li{
+            list-style-type: none;
+        }
+
+        .section2 ul{
+            display: inline-block;
+        }
+
+        .section2 {
+            background: black;
+            color: white;
+            height: 200px;
+            display: none;
+            width: 100%;
+            /* z축으로 띄어야지 position 사용이 필요*/
+            z-index: 5;
+            position: fixed;
+            /* position은 
+            static (기본)
+            relative (내위치를 기본으로)
+            absolute (relative를 갖고있는 부모를 기준으로)
+            fixed (내화면을 기준으로)
+            sticky (내가 보는 현재화면(스크롤)기준으로)
+            */
+        }
+
+        .back-black{
+            width: 100%;
+            background: rgb(0,0,0, 0.5);
+            height: 0;
+            top: 0;
+            left: 0;
+            position: fixed;   /* 전체화면 기준으로 동작(z-index 사용가능)*/
+            z-index: 10;
+            display: flex;
+            justify-content:center;
+            align-items:center;  
+            visibility: hidden;    /* 내용물 감춤*/
+            opacity: 0;       /* 투명하게 */
+
+            transition: all 0.5s;   /* 모든상태변화는 0.5초에 시간소요*/
+            /* 
+            visibility: visible;
+            height: 100%;
+            opacity: 80%;
+             */
+        }
+
+        .back-white{
+            background: white;
+            width: 400px;
+            height: 400px;
+            padding: 30px;
+        }
+
+        .back-white input[type="text"],
+        .back-white input[type="password"]{
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="section1">
+        <h2 id="logo">로고제목</h2>
+        <ul id="list">
+            <li>Coffee</li>
+            <li>Latte</li>
+            <li>etc</li>
+        </ul>
+    </div>
+    <div class="section2" id="box1">
+        <ul>
+            <li><h3>Coffee</h3></li>
+            <li>아메리카노</li>
+            <li>콜드브루</li>
+            <li>디카페인</li>
+        </ul>
+        <ul>
+            <li><h3>Latte</h3></li>
+            <li>모카라떼</li>
+            <li>초코라떼</li>
+            <li>카페라떼</li>
+        </ul>
+    </div>
+    <!-- 버튼을 클릭하면 doModal()이라는 함수를 사용-->
+    <button onclick="doModal()">새로운 창 열기</button>
+    <div class="back-black">
+        <div class="back-white">
+            <h4>제목</h4>
+            <form>
+                <input type="text" placeholder="아이디를 입력하세요">
+                <input type="password" placeholder="비밀번호를 입력하세요">
+                <!-- submit : 백엔드로 전달 -->
+                <!-- button : 백엔드 전달 X -->
+                <input type="submit" value="로그인">
+                <input type="button" value="닫기" onclick="closeModal()">
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        // document.getElementById('logo').addEventListener('mouseover',function(){
+        //     document.getElementById('box1').style.display ='block'
+        // })
+        // document.getElementById('logo').addEventListener('mouseleave',function(){
+        //     document.getElementById('box1').style.display ='none'
+        // })
+
+
+        var 상태체크 = false
+        // HTML에서 logo라는 아이디를 찾아서 클릭이벤트를 줘라
+        document.getElementById('logo').addEventListener('click',function(){
+            // 콜백함수 : 매개변수로 사용되는 함수
+            // 만약에 상태가 안보여주는 상태면 보여주게바꿔라 (flex)
+            // 그게 아니라면(보여주는 상태라면) 안보여주게바꿔라 (none)
+            if(상태체크 === false){
+                // .section2를 display : flex로 
+                // + 상태관리
+                document.querySelector('.section2').style.display = 'flex'
+                상태체크 = true
+            }else{
+                document.querySelector('.section2').style.display = 'none'
+                상태체크 = false
+            }
+        })
+
+
+        // HTML에서 list라는 아이디를 찾아서 마우스오버 이벤트를 줘라
+        // HTML에서 list라는 아이디를 찾아서 마우스리브 이벤트를 줘라
+        document.getElementById('list').addEventListener('mouseover',function(){
+            document.getElementById('box1').style.display = 'flex'
+        })
+        document.getElementById('list').addEventListener('mouseleave',function(){
+            document.getElementById('box1').style.display = 'none'
+        })
+
+        function doModal(){
+            // 평소에는 숨겨놓은 창을 보여주게 바꿔야지
+            /* 
+            visibility: visible;
+            height: 100%;
+            opacity: 80%;
+             */
+            document.querySelector('.back-black').style.visibility = 'visible'
+            document.querySelector('.back-black').style.height = '100%'
+            document.querySelector('.back-black').style.opacity = '80%'
+        }
+
+        function closeModal(){
+            /* 
+            visibility: hidden;
+            height: 0;
+            opacity: 0;
+             */
+            document.querySelector('.back-black').style.visibility = 'hidden'
+            document.querySelector('.back-black').style.height = '0'
+            document.querySelector('.back-black').style.opacity = '0'
+        }
+        //closeModal() 함수를 만드시오
+    </script>
+</body>
+</html>
