@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭기능 만들기</title>
+    <style>
+        .tap-top{
+            width: 400px;
+            height: 300px;
+        }
+        .tap-top ul{
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+        }
+        .tap-top li{
+            display: inline-block;
+            padding: 10px 50px;
+            font-size: 16px;
+            border-bottom: 1px solid lightgray;
+        }
+
+        .tap-selected{
+            border: 1px solid lightgray;
+            border-top: 1px solid orange;
+            border-bottom: 0 !important;
+        }
+
+        .tap-bottom{
+        }
+        .tap-bottom p{
+            margin: 0;
+            padding: 0;
+        }
+
+        .display-none{
+            display: none;
+        }
+
+        .tap-button{
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tap-top">
+        <ul>
+            <li class="tap-button tap-selected">탭1</li>
+            <li class="tap-button">탭2</li>
+            <li class="tap-button">텝3</li>
+        </ul>
+        <div class="tap-bottom display-none">
+            탭1의 내용
+        </div>
+        <div class="tap-bottom display-none">
+            탭2의 내용
+        </div>
+        <div class="tap-bottom display-none">
+            탭3의 내용
+        </div>
+    </div>
+    <script>
+        // for(let m=0; m<3; m++){
+        //     document.querySelectorAll('.tap-button')[m].addEventListener('click',function(){
+        //     for(let i=0; i<3; i++){
+        //         document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
+        //         document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
+        //     }
+        //     document.querySelectorAll('.tap-bottom')[m].classList.remove('display-none')
+        //     document.querySelectorAll('.tap-button')[m].classList.add('tap-selected')
+        // })
+        // }
+
+
+        var 탭버튼갯수 = document.querySelectorAll('.tap-button').length
+        var 탭내용갯수 = document.querySelectorAll('.tap-bottom').length
+        for(let 순서=0; 순서<탭버튼갯수; 순서++ ){
+            document.querySelectorAll('tap-button')[순서].addEventListener('click',function(){
+                for(let i=0; i<탭버튼갯수; i++){
+                    document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
+                    document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
+                }
+                document.querySelectorAll('.tap-bottom')[순서].classList.remove('display-none')
+                document.querySelectorAll('.tap-button')[순서].classList.add('tap-selected')
+            })
+        }
+
+
+
+        // document.querySelectorAll('.tap-button')[0].addEventListener('click',function(){
+        //     // 모든 tap-bottom 에다가 display-none을 붙여주고 
+        //     // 선택된 tap-bottom 에다가 display-none을 제거한다
+        //     // 모든 tap-button 의 tap-selected 를 제거하고
+        //     // 선택된 tap-button 에 tap-selected 를 추가한다
+        //     for(let i=0; i<3; i++){
+        //         document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
+        //         document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
+        //     }
+        //     document.querySelectorAll('.tap-bottom')[0].classList.remove('display-none')
+        //     document.querySelectorAll('.tap-button')[0].classList.add('tap-selected')
+        // })
+        // document.querySelectorAll('.tap-button')[1].addEventListener('click',function(){
+        //     for(let i=0; i<3; i++){
+        //         document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
+        //         document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
+        //     }
+        //     document.querySelectorAll('.tap-bottom')[1].classList.remove('display-none')
+        //     document.querySelectorAll('.tap-button')[1].classList.add('tap-selected')
+        // })
+        // document.querySelectorAll('.tap-button')[2].addEventListener('click',function(){
+        //     for(let i=0; i<3; i++){
+        //         document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
+        //         document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
+        //     }
+        //     document.querySelectorAll('.tap-bottom')[2].classList.remove('display-none')
+        //     document.querySelectorAll('.tap-button')[2].classList.add('tap-selected')
+        // })
+
+    </script>
+</body>
+</html>
