@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax실습</title>
+</head>
+<body>
+    <button id="get-btn">get 요청</button>
+    <button id="post-btn">Post 요청</button>
+    <button id="clear-btn">지우기</button>
+    <div id="box"></div>
+
+    <script>
+        // get-btn을 누르면 get 요청을 한 결과를 html에 표시
+        // post-btn을 누르면 post 요청을 한 결과를 html에 표시
+        // clear-btn을 누르면 innerHTML = ''로 이력 삭제
+        document.getElementById('get-btn').addEventListener('click',()=>{
+            fetch('https://httpbin.org/get')
+            .then(res =>res.json())
+            .then(data =>{
+                console.log(data)
+                var 변수 = `
+                <p>${JSON.stringify(data)}</p>
+                <h1>${data['url']}
+                <hr>`
+                document.getElementById('box').insertAdjacentHTML('beforeend',변수 )
+            })
+            .catch(err => console.error('에러발생', err))
+            
+        })
+        document.getElementById('post-btn').addEventListener('click',()=>{
+            fetch('https://httpbin.org/post',{
+                method: "POST",
+                Headers: {
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(
+                    {
+
+                    }
+                )
+            })
+            .then(res =>res.json())
+            .then(data =>{
+                console.log(data['url'])
+                var h1 = `
+                <p>${JSON.stringify(data)}</p>
+                <h1>${data['url']}</h1>
+                <hr>`
+                document.getElementById('box').insertAdjacentHTML('beforeend',h1 )
+            })
+            .catch(err => console.error('에러발생', err))
+        })
+        document.getElementById('clear-btn').addEventListener('click',()=>{
+            document.getElementById('box');
+            box.innerHTML = ''
+            })
+
+            // 변수의 스코프 
+            // {}안에서 만들어진 변수는 {}가 끝나면 삭제됨 : 지역변수
+            // 함수안에서 변수를 만들면 함수가 끝나면 그 변수는 삭제됨 : 지역변수
+        
+    </script>
+</body>
+</html>
