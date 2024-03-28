@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow function</title>
+    <style>
+        body{
+            margin: 0;
+            background: gray;
+        }
+        .container-content{
+            height: 800px;
+            border: 2px solid yellowgreen;
+        }
+        .container-nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;   /* 위아래는 0, 양옆은 25px */
+            background: beige;
+            z-index: 15;   /* position 변경 필요 */
+            position: fixed;        /* 내 화면을 따라다녀라 */
+            width: 100%;
+            box-sizing: border-box;
+            height: 80px;
+        }
+
+        .container-nav li{
+            display: inline-block;
+        }
+
+        .container-nav a{
+            color: black;
+            text-decoration: none;
+        }
+        .ads{
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: sticky;
+            top: 100px;
+            left: 80%;
+        }
+        .sticky-box{
+            width: 50px;
+            height: 50px;
+            background: blue;
+            position: sticky;
+            top: 100px;
+            left: 70%;
+            z-index: 4;
+        }
+    </style>
+</head>
+<body>
+    <!-- 스크롤에 적용된 함수를 arrow function 기반으로 변경-->
+    <div class="container-nav">
+        <h3>로고</h3>
+        <ul>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">소개</a></li>
+        </ul>
+    </div>
+    <div style="height: 80px;"></div>
+
+    <div class="container-content">
+        <div class="sticky-box">스티키</div>
+    </div>
+    <div class="container-content">
+        <div class="sticky-box">스티키</div>
+    </div>
+    <div class="container-content">
+        <div class="sticky-box">스티키</div>
+    </div>
+    <script>
+        window.addEventListener('scroll',()=>{
+            스크롤위치 = window.scrollY
+            console.log(스크롤위치)
+            if(스크롤위치 > 200){
+                document.querySelector('.container-nav h3').style.fontSize = '12px'
+                document.querySelector('.container-nav h3').style.color = 'red'
+                document.querySelector('.container-nav h3').style.transition = 'all,0.5s'
+            }else if(스크롤위치 < 200){
+                document.querySelector('.container-nav h3').style.fontSize = '20px'
+                document.querySelector('.container-nav h3').style.color = 'black'
+            }
+        })
+    </script>
+</body>
+</html>

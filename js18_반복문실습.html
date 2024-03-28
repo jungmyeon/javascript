@@ -62,30 +62,30 @@
         </div>
     </div>
     <script>
-        // for(let m=0; m<3; m++){
-        //     document.querySelectorAll('.tap-button')[m].addEventListener('click',function(){
-        //     for(let i=0; i<3; i++){
-        //         document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
-        //         document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
-        //     }
-        //     document.querySelectorAll('.tap-bottom')[m].classList.remove('display-none')
-        //     document.querySelectorAll('.tap-button')[m].classList.add('tap-selected')
-        // })
-        // }
-
-
-        var 탭버튼갯수 = document.querySelectorAll('.tap-button').length
-        var 탭내용갯수 = document.querySelectorAll('.tap-bottom').length
-        for(let 순서=0; 순서<탭버튼갯수; 순서++ ){
-            document.querySelectorAll('tap-button')[순서].addEventListener('click',function(){
-                for(let i=0; i<탭버튼갯수; i++){
-                    document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
-                    document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
-                }
-                document.querySelectorAll('.tap-bottom')[순서].classList.remove('display-none')
-                document.querySelectorAll('.tap-button')[순서].classList.add('tap-selected')
-            })
+        for(let m=0; m<3; m++){
+            document.querySelectorAll('.tap-button')[m].addEventListener('click',function(){
+            for(let i=0; i<3; i++){
+                document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
+                document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
+            }
+            document.querySelectorAll('.tap-bottom')[m].classList.remove('display-none')
+            document.querySelectorAll('.tap-button')[m].classList.add('tap-selected')
+        })
         }
+
+
+        // var 탭버튼갯수 = document.querySelectorAll('.tap-button').length
+        // var 탭내용갯수 = document.querySelectorAll('.tap-bottom').length
+        // for(let 순서=0; 순서<탭버튼갯수; 순서++ ){
+        //     document.querySelectorAll('tap-button')[순서].addEventListener('click',function(){
+        //         for(let i=0; i<탭버튼갯수; i++){
+        //             document.querySelectorAll('.tap-bottom')[i].classList.add('display-none')
+        //             document.querySelectorAll('.tap-button')[i].classList.remove('tap-selected')
+        //         }
+        //         document.querySelectorAll('.tap-bottom')[순서].classList.remove('display-none')
+        //         document.querySelectorAll('.tap-button')[순서].classList.add('tap-selected')
+        //     })
+        // }
 
 
 
