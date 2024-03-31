@@ -25,13 +25,13 @@
                     </div>
                     <div class="second-nav">
                         <ul>
-                            <li><a>COFFEE</a></li>
-                            <li><a>MENU</a></li>
-                            <li><a>STORE</a></li>
-                            <li><a>RESPONSIBILITY</a></li>
-                            <li><a>STARBUCKS REWARDS</a></li>
-                            <li><a>CORPORATE SALES</a></li>
-                            <li><a>WHAT'S NEW</a></li>
+                            <li class="down-show"><a>COFFEE</a></li>
+                            <li class="down-show"><a>MENU</a></li>
+                            <li class="down-show"><a>STORE</a></li>
+                            <li class="down-show"><a>RESPONSIBILITY</a></li>
+                            <li class="down-show"><a>STARBUCKS REWARDS</a></li>
+                            <li class="down-show"><a>CORPORATE SALES</a></li>
+                            <li class="down-show"><a>WHAT'S NEW</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,6 +62,49 @@
                 <div></div>
                 <div></div>
             </div>
+            <!-- <div class="down-nav-inner">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+            <div class="down-nav-inner">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+            <div class="down-nav-inner">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </div>
+            <div class="down-nav-inner">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+            </div>
+            <div class="down-nav-inner">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+            <div class="down-nav-inner">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+            </div> -->
         </div>
     </nav>
 
@@ -86,5 +129,47 @@
     <footer>
 
     </footer>
+
+    <script>
+        var a_flag = [false, false, false, false, false, false, false]
+        var down_flag = false;
+        
+        document.querySelectorAll('.down-show')[0].addEventListener('mouseenter',(e)=>{
+            // 마우스가 들어갔을때 down-nav높이를 변경하고 visibal로 변경
+            a_flag[0] = true;
+        })
+        
+        document.querySelector('.down-nav').addEventListener('mouseleave',(e)=>{
+            // 마우스가 나갔을때 down-nav높이를 원래대로 하고 hidden으로 변경
+            down_flag = true;
+            a_flag[0] = false;
+        })
+        document.querySelector('.down-nav').addEventListener('mouseleave',(e)=>{
+            // 마우스가 나갔을때 down-nav높이를 원래대로 하고 hidden으로 변경
+            down_flag = false;
+        })
+        document.querySelector('.top-nav-inner').addEventListener('mouseover',(e)=>{
+            // 마우스가 나갔을때 down-nav높이를 원래대로 하고 hidden으로 변경
+            a_flag[0] = false;
+        })
+
+
+        // 50ms 로 변수값을 체크해서 true면 down-nav 보이게, false면 안보이게
+        // 50ms 마다 동작
+        setInterval(function(){
+            
+            if(a_flag[0] == false && down_flag == false){
+                document.querySelector('.down-nav').classList.remove('down-nav-show')
+                document.querySelectorAll('.second-nav a')[0].classList.remove('second-nav-show')
+            }else{
+                // 보이게
+                document.querySelector('.down-nav').classList.add('down-nav-show')
+                document.querySelectorAll('.second-nav a')[0].classList.add('second-nav-show')
+            }
+        },50)
+
+
+
+    </script>
 </body>
 </html>

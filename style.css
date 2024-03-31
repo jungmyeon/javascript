@@ -84,19 +84,24 @@ nav{
     display: inline-block;
 }
 
-.second-nav a:hover{
-    color: green;
+.second-nav-show{
+    color: green !important;
     cursor: pointer;
-    text-decoration: underline;
-    background: rgb(44,42,41)
+    text-decoration: underline !important;
+    background: rgb(44,42,41);
 }
 
 .down-nav{
     background: rgb(44,42,41);
     width: 100%;
-    height: 0;
+    max-height: 0;
     visibility: hidden;
-    transition: all 0.5s;
+    transition: max-height 1s;
+}
+
+.down-nav-show{
+    max-height: 500px;
+    visibility: visible;
 }
 
 .down-nav-inner{
@@ -105,6 +110,7 @@ nav{
     color: white;
     display: flex;
     padding: 15px;
+    align-items: center;
 }
 
 .down-nav-inner div{
@@ -165,6 +171,14 @@ nav{
     border: 2px solid black;
     border-radius: 5px;
     padding: 10px 20px;
+    transition: all 0.5s;
+}
+
+.section-1 .section-1-btn:hover{
+    color: white;
+    background: rgb(19,54,45);
+    cursor: pointer;
+    text-decoration: underline;
 }
 .section-4{
     width: 100%;
