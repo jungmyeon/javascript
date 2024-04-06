@@ -78,10 +78,12 @@ nav{
 .second-nav a{
     color: black;
     text-decoration: none;
-    padding: 10px 10px 22px 10px; /* 위에서부터 시계방향으로 */
+    padding: 10px 15px 25px 15px; /* 위에서부터 시계방향으로 */
 }
 .second-nav li{
     display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
 }
 
 .second-nav-show{
@@ -94,14 +96,18 @@ nav{
 .down-nav{
     background: rgb(44,42,41);
     width: 100%;
-    max-height: 0;
+    max-height: auto;
     visibility: hidden;
-    transition: max-height 1s;
+    position: absolute;
+    /* display: none; */
 }
 
 .down-nav-show{
-    max-height: 500px;
+    height: auto;
     visibility: visible;
+    /* display: block; */
+    cursor: pointer;
+    transition: height 0.5s ease-in;
 }
 
 .down-nav-inner{
@@ -110,18 +116,25 @@ nav{
     color: white;
     display: flex;
     padding: 15px;
-    align-items: center;
+    background: rgb(44,42,41);
+    max-height: auto;
 }
 
 .down-nav-inner div{
     width: 200px;
+    max-height: auto;
 }
 
-.down-nav li{
+.down-nav-inner li{
     list-style-type: none;
     font-size: small;
     color: gray;
 }
+
+.down-nav-inner h3{
+    margin: 0;
+}
+
 
 .down-nav ul{
     margin: 0;
@@ -165,13 +178,17 @@ nav{
 
 .section-1 .section-1-btn{
     position: absolute;
-    left: 20%;
-    top: 65%;
+    left: 19%;
+    top: 63%;
     background: transparent;  /* 투명 */
     border: 2px solid black;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 17px;
     transition: all 0.5s;
+    width: 8vw;
+    height: 25hw;
+    min-width: 8vw;
+    min-height: 25hw;
 }
 
 .section-1 .section-1-btn:hover{
